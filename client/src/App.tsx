@@ -3,13 +3,15 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { useState } from 'react';
 
+const url = import.meta.env.VITE_API_URL + '/api/env';
+
 function App() {
   const [str, setStr] = useState('');
   const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
-    const res = await fetch('/api/env');
+    const res = await fetch(url);
     setLoading(false);
     if (res.ok) {
       const data = await res.text();
